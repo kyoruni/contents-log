@@ -11,6 +11,14 @@ import * as directives from 'vuetify/directives'
 const vuetify = createVuetify({
   components,
   directives,
+  theme: {
+    defaultTheme: 'light',
+    themes: {
+      light: {
+        primary: '#ff99cc'
+      }
+    }
+  },
 })
 
 createApp(App).use(vuetify).mount('#app')

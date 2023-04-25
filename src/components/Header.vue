@@ -7,7 +7,7 @@ const tabs = [
   // { "name": "ゲーム", "value": "game" },
   { "name": "アニメ", "value": "anime" },
   // { "name": "まんが", "value": "comic" },
-  // { "name": "本", "value": "book" },
+  { "name": "本", "value": "book" },
   // { "name": "映画", "value": "movie" },
 ];
 const currentTab = ref("anime");
@@ -19,8 +19,8 @@ const changeTab = (selectTab: string) => {
 </script>
 
 <template>
-  <v-toolbar color="primary">
-    <v-toolbar-title>Page title</v-toolbar-title>
+  <v-toolbar :color="'#f0f0f0'">
+    <v-toolbar-title style="color: #da2b5c;">@kyoruni log</v-toolbar-title>
     <v-spacer></v-spacer>
     <template v-slot:extension>
       <v-tabs centered>

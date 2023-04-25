@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "title": "イラスト図解式 この一冊で全部わかるWeb技術の基本",
+    "publisher": "NRIネットコム株式会社",
+    "author": "小林恭平,坂本陽",
+    "page": 192,
+    "publishDate": "2017-03-16",
+    "buyDate": "不明",
+    "startDate": "不明",
+    "endDate": "2019-10-23",
+    "category": "技術",
+    "type": "物理",
+    "impression": ""
+  },
+  {
+    "id": 1,
+    "title": "1週間でLPICの基礎が学べる本 第3版",
+    "publisher": "インプレス",
+    "author": "中島能和",
+    "page": 326,
+    "publishDate": "2019-06-20",
+    "buyDate": "2020-06-28",
+    "startDate": "不明",
+    "endDate": "2020-07-11",
+    "category": "技術",
+    "type": "物理",
+    "impression": ""
+  },
+  {
+    "id": 1,
+    "title": "Amazon Web Services 基礎からのネットワーク&サーバー構築 改訂3版",
+    "publisher": "日経BP",
+    "author": "大澤文孝,玉川憲,片山暁雄,今井雄太",
+    "page": 216,
+    "publishDate": "2020-02-06",
+    "buyDate": "2020-12-25",
+    "startDate": "2020-12-25",
+    "endDate": "2020-12-28",
+    "category": "技術",
+    "type": "物理",
+    "impression": ""
+  },
+  {
+    "id": 1,
+    "title": "Linuxの絵本 サーバーOSが楽しくわかる9つの扉",
+    "publisher": "翔泳社",
+    "author": "株式会社アンク",
+    "page": 216,
+    "publishDate": "2020-01-20",
+    "buyDate": "2020-11-26",
+    "startDate": "2020-12-25",
+    "endDate": "2020-12-31",
+    "category": "技術",
+    "type": "物理",
+    "impression": ""
+  }
+]

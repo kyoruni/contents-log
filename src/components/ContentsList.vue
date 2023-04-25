@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onBeforeMount, watch } from "vue";
 import animeList from "@/assets/json/anime.json";
+import bookList from "@/assets/json/book.json";
+import { propsToAttrMap } from "@vue/shared";
 
 const props = defineProps({
   category: {
@@ -10,6 +12,8 @@ const props = defineProps({
   }
 });
 
+const itemsPerPage = 100;
+
 interface AnimeData {
   id: number;
   title: string;
@@ -18,21 +22,94 @@ interface AnimeData {
   airdate: string;
   watcheddate: string;
   impression: string;
-  tags: string[];
 };
 
-const contents = ref<AnimeData[]>([]);
+interface BookData {
+  id: number;
+  title: string;
+  publisher: string;
+  author: string;
+  page: number;
+  publishDate: string;
+  buyDate: string;
+  startDate: string;
+  endDate: string;
+  category: string;
+  type: string;
+  impression: string;
+};
 
-onMounted(() => {
+interface Table {
+  title: string;
+  align: string;
+  sortable: boolean;
+  key: string;
+  width: string;
+}
+
+const contents = ref<AnimeData[] | BookData[]>([]);
+const headers = ref<Table[]>([]);
+
+onBeforeMount(() => {
+  fetchItemList();
+});
+
+watch(
+  () => props.category,
+  () => {
+    fetchItemList();
+  }
+);
+
+const fetchItemList = () => {
   switch (props.category) {
     case "anime":
       contents.value = animeList;
+      headers.value = [
+        { title: "タイトル", align: 'start', sortable: true, key: "title", width: "100px" },
+        { title: "話数", align: 'start', sortable: true, key: "episode", width: "50px"},
+        { title: "サブタイトル", align: 'start', sortable: true, key: "subtitle", width: "100px" },
+        { title: "放送日", align: 'start', sortable: true, key: "airdate", width: "50px" },
+        { title: "視聴日", align: 'start', sortable: true, key: "watcheddate", width: "50px" },
+        { title: "ひとこと", align: 'start', sortable: true, key: "impression", width: "200px" },
+      ];
+      break;
+    case "book":
+      contents.value = bookList;
+      headers.value = [
+        { title: "タイトル", align: 'start', sortable: true, key: "title", width: "200px" },
+        { title: "出版社", align: 'start', sortable: true, key: "publisher", width: "1px"},
+        { title: "著者", align: 'start', sortable: true, key: "author", width: "1px" },
+        { title: "ページ数", align: 'start', sortable: true, key: "page", width: "1px" },
+        { title: "出版日", align: 'start', sortable: true, key: "publishDate", width: "1px" },
+        { title: "購入日", align: 'start', sortable: true, key: "buyDate", width: "1px" },
+        { title: "開始日", align: 'start', sortable: true, key: "startDate", width: "1px" },
+        { title: "読了日", align: 'start', sortable: true, key: "endDate", width: "1px" },
+        { title: "カテゴリー", align: 'start', sortable: true, key: "category", width: "100px" },
+        { title: "ひとこと", align: 'start', sortable: true, key: "impression", width: "200px" }
+      ];
       break;
     default:
-      contents.value = [];
+      contents.value = animeList;
   };
-});
+};
 </script>
+
 <template>
-  {{ contents }}
+  <v-data-table
+    class="pa-5"
+    :headers="headers"
+    :items="contents"
+    item-value="name"
+    density="compact"
+    :fixed-header="true"
+    :multi-sort="true"
+  ></v-data-table>
 </template>
+
+<style>
+/* vue3だとhide-default-footerが動いていないようなのでcssで無理やり消す */
+.v-data-table-footer {
+  display: none !important;
+}
+</style>

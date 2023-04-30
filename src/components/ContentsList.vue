@@ -1,20 +1,21 @@
 <script setup lang="ts">
 import { ref, onBeforeMount, watch } from "vue";
-import animeList from "@/assets/json/anime.json";
+import entertainmentList from "@/assets/json/entertainment.json";
 import bookList from "@/assets/json/book.json";
+import gameList from "@/assets/json/game.json";
 import { propsToAttrMap } from "@vue/shared";
 
 const props = defineProps({
   category: {
     type: String,
     required: false,
-    default: "anime"
+    default: "entertainment"
   }
 });
 
 const itemsPerPage = 100;
 
-interface AnimeData {
+interface EntertainmentData {
   id: number;
   title: string;
   episode: string;
@@ -39,6 +40,20 @@ interface BookData {
   impression: string;
 };
 
+interface GameData {
+  id: number;
+  title: string;
+  developer: string;
+  release_date: string;
+  genre: string;
+  summary: string;
+  play_time: string;
+  start_date: string;
+  end_date: string;
+  impression: string;
+  memo: string;
+};
+
 interface Table {
   title: string;
   align: string;
@@ -47,7 +62,7 @@ interface Table {
   width: string;
 }
 
-const contents = ref<AnimeData[] | BookData[]>([]);
+const contents = ref<EntertainmentData[] | BookData[] | GameData[]>([]);
 const headers = ref<Table[]>([]);
 
 onBeforeMount(() => {
@@ -63,14 +78,15 @@ watch(
 
 const fetchItemList = () => {
   switch (props.category) {
-    case "anime":
-      contents.value = animeList;
+    case "entertainment":
+      contents.value = entertainmentList;
       headers.value = [
         { title: "タイトル", align: 'start', sortable: true, key: "title", width: "100px" },
         { title: "話数", align: 'start', sortable: true, key: "episode", width: "50px"},
         { title: "サブタイトル", align: 'start', sortable: true, key: "subtitle", width: "100px" },
         { title: "放送日", align: 'start', sortable: true, key: "airdate", width: "50px" },
         { title: "視聴日", align: 'start', sortable: true, key: "watcheddate", width: "50px" },
+        { title: "カテゴリー", align: 'start', sortable: true, key: "category", width: "100px" },
         { title: "ひとこと", align: 'start', sortable: true, key: "impression", width: "200px" },
       ];
       break;
@@ -89,8 +105,23 @@ const fetchItemList = () => {
         { title: "ひとこと", align: 'start', sortable: true, key: "impression", width: "200px" }
       ];
       break;
+    case "game":
+      contents.value = gameList;
+      headers.value = [
+        { title: 'タイトル', align: 'start', sortable: true, key: 'title', width: '200px' },
+        { title: '開発元', align: 'start', sortable: true, key: 'developer', width: '100px' },
+        { title: '発売日', align: 'start', sortable: true, key: 'release_date', width: '100px' },
+        { title: 'ジャンル', align: 'start', sortable: true, key: 'genre', width: '100px' },
+        { title: '概要', align: 'start', sortable: true, key: 'summary', width: '200px' },
+        { title: 'プレイ時間', align: 'start', sortable: true, key: 'play_time', width: '100px' },
+        { title: '開始日', align: 'start', sortable: true, key: 'start_date', width: '100px' },
+        { title: '終了日', align: 'start', sortable: true, key: 'end_date', width: '100px' },
+        { title: 'ひとこと', align: 'start', sortable: true, key: 'impression', width: '200px' },
+        { title: 'メモ', align: 'start', sortable: true, key: 'memo', width: '200px' }
+      ];
+      break;
     default:
-      contents.value = animeList;
+      contents.value = entertainmentList;
   };
 };
 </script>
@@ -104,6 +135,7 @@ const fetchItemList = () => {
     density="compact"
     :fixed-header="true"
     :multi-sort="true"
+    scrollX
   ></v-data-table>
 </template>
 
@@ -111,5 +143,15 @@ const fetchItemList = () => {
 /* vue3だとhide-default-footerが動いていないようなのでcssで無理やり消す */
 .v-data-table-footer {
   display: none !important;
+}
+
+/* 横スクロールさせたい */
+.v-data-table {
+  /* white-space : nowrap; */
+  font-size: 0.9rem !important;
+}
+
+.v-data-table tr {
+  height: 60px !important;
 }
 </style>

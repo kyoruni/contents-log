@@ -6,8 +6,8 @@
     "subtitle": "はじまりのペンダント 前編",
     "airdate": "2023-04-14",
     "watcheddate": "2023-04-15",
-    "impression": "学園ものなんですか！！！？？？",
-    "tags": []
+    "category": ["アニメ"],
+    "impression": "学園ものなんですか！！！？？？"
   },
   {
     "id": 2,
@@ -16,8 +16,8 @@
     "subtitle": "はじまりのペンダント 後編",
     "airdate": "2023-04-14",
     "watcheddate": "2023-04-15",
-    "impression": "リコさんが現状巻きこまれているだけに見えるのが気になる",
-    "tags": []
+    "category": ["アニメ"],
+    "impression": "「ポケモン」でなかったら脱落していたかもしれない"
   },
   {
     "id": 3,
@@ -26,8 +26,8 @@
     "subtitle": "Mother and Children",
     "airdate": "2023-04-12",
     "watcheddate": "2023-04-16",
-    "impression": "あまりにも完璧な1話だった",
-    "tags": []
+    "category": ["アニメ"],
+    "impression": "あまりにも完璧な1話だった"
   },
   {
     "id": 4,
@@ -36,7 +36,7 @@
     "subtitle": "大地からの使者",
     "airdate": "2023-04-09",
     "watcheddate": "2023-04-16",
-    "impression": "普通に学園もの始まった",
-    "tags": []
+    "category": ["アニメ"],
+    "impression": "普通に学園もの始まった"
   }
 ]

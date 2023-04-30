@@ -4,7 +4,7 @@ import { ref } from "vue";
 import Header from '@/components/Header.vue';
 import ContentsList from '@/components/ContentsList.vue';
 
-const currentTab = ref("anime");
+const currentTab = ref("entertainment");
 
 const changeTab = (selected: string) => {
   currentTab.value = selected;

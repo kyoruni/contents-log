@@ -4,13 +4,11 @@ import { ref } from "vue";
 const emit = defineEmits(["changeTab"]);
 
 const tabs = [
-  // { "name": "ゲーム", "value": "game" },
-  { "name": "アニメ", "value": "anime" },
-  // { "name": "まんが", "value": "comic" },
-  { "name": "本", "value": "book" },
-  // { "name": "映画", "value": "movie" },
+  { "name": "アニメ・映画・特撮", "value": "entertainment" },
+  { "name": "本・漫画", "value": "book" },
+  { "name": "ゲーム", "value": "game" }
 ];
-const currentTab = ref("anime");
+const currentTab = ref("entertainment");
 
 const changeTab = (selectTab: string) => {
   currentTab.value = selectTab;
@@ -20,7 +18,7 @@ const changeTab = (selectTab: string) => {
 
 <template>
   <v-toolbar :color="'#f0f0f0'">
-    <v-toolbar-title style="color: #da2b5c;">@kyoruni log</v-toolbar-title>
+    <v-toolbar-title style="color: #da2b5c;"><a href="/">@kyoruni log</a></v-toolbar-title>
     <v-spacer></v-spacer>
     <template v-slot:extension>
       <v-tabs centered>
@@ -30,3 +28,12 @@ const changeTab = (selectTab: string) => {
   </v-toolbar>
 </template>
 
+<style scoped lang="scss">
+.v-toolbar-title__placeholder a {
+  color: #da2b5c;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+</style>

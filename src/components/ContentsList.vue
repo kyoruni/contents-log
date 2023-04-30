@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onBeforeMount, watch } from "vue";
+import { ref, onBeforeMount, watch, computed } from "vue";
 import entertainmentList from "@/assets/json/entertainment.json";
 import bookList from "@/assets/json/book.json";
 import gameList from "@/assets/json/game.json";
@@ -79,7 +79,7 @@ watch(
 const fetchItemList = () => {
   switch (props.category) {
     case "entertainment":
-      contents.value = entertainmentList;
+      contents.value = entertainmentList.slice().reverse();
       headers.value = [
         { title: "タイトル", align: 'start', sortable: true, key: "title", width: "100px" },
         { title: "話数", align: 'start', sortable: true, key: "episode", width: "50px"},
@@ -91,7 +91,7 @@ const fetchItemList = () => {
       ];
       break;
     case "book":
-      contents.value = bookList;
+      contents.value = bookList.slice().reverse();
       headers.value = [
         { title: "タイトル", align: 'start', sortable: true, key: "title", width: "200px" },
         { title: "出版社", align: 'start', sortable: true, key: "publisher", width: "1px"},
@@ -106,7 +106,7 @@ const fetchItemList = () => {
       ];
       break;
     case "game":
-      contents.value = gameList;
+      contents.value = gameList.slice().reverse();
       headers.value = [
         { title: 'タイトル', align: 'start', sortable: true, key: 'title', width: '200px' },
         { title: '開発元', align: 'start', sortable: true, key: 'developer', width: '100px' },

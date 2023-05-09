@@ -38,5 +38,15 @@
     "watcheddate": "2023-04-16",
     "category": ["アニメ"],
     "impression": "普通に学園もの始まった"
+  },
+  {
+    "id": 5,
+    "title": "ゾイド -ZOIDS-",
+    "episode": "第1話",
+    "subtitle": "惑星Ziの少年",
+    "airdate": "1999-09-04",
+    "watcheddate": "2023-05-02",
+    "category": ["アニメ"],
+    "impression": "配信ありがたいです 最高のOP"
   }
 ]

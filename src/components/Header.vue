@@ -18,7 +18,7 @@ const changeTab = (selectTab: string) => {
 
 <template>
   <v-toolbar :color="'#f0f0f0'">
-    <v-toolbar-title style="color: #da2b5c;"><a href="/">@kyoruni log</a></v-toolbar-title>
+    <v-toolbar-title style="color: #da2b5c;"><a href="/">@kyoruni 見た・読んだ・遊んだリスト</a></v-toolbar-title>
     <v-spacer></v-spacer>
     <template v-slot:extension>
       <v-tabs centered>
